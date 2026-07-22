@@ -168,6 +168,8 @@ the Analyst Queue since it falls short of the autonomous-action threshold.</i></
 
 ## Current Scope
 
+App Link: https://etproject-qbxhm67rw8famf7e7nknvd.streamlit.app/
+
 The implemented system is capable of:
 
 - Detecting anomalous behaviour
