@@ -14,3 +14,4 @@ class RiskVerdict(BaseModel):
     overall_risk_score: float
     recommended_action: str
     gate_decision: str
+    explanation: str | None = None

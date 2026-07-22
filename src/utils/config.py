@@ -12,7 +12,7 @@ class PolicyConfig(BaseModel):
 
 
 def get_project_root() -> Path:
-    return Path(__file__).resolve().parents[3]
+    return Path(__file__).resolve().parents[2]
 
 
 def load_yaml(path: Path) -> dict[str, Any]:

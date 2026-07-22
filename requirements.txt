@@ -1,0 +1,12 @@
+fastapi
+streamlit
+PyYAML
+pydantic
+networkx
+scikit-learn
+torch
+sentence-transformers
+faiss-cpu
+gdown
+pytest
+uvicorn[standard]

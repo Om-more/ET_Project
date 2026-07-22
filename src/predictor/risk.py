@@ -2,23 +2,24 @@ from __future__ import annotations
 
 from src.orchestrator.models import RiskVerdict
 from src.ttp_mapper.mapper import TtpMatch
-from src.utils.config import load_policy_config
+from src.predictor.confidence_gate import determine_confidence_gate
+from src.predictor.decision_fusion import compute_final_threat_score, build_decision_explanation
 
 
-def compute_overall_risk_score(ttp_confidence: float, asset_criticality: float, blast_radius: float) -> float:
-    return ttp_confidence * ((asset_criticality + blast_radius) / 2.0)
-
-
-def determine_gate_decision(confidence: float, blast_radius: float) -> str:
-    policy = load_policy_config()
-    automated_threshold = float(policy.risk["automated_confidence"])
-    blast_threshold = float(policy.risk["blast_radius_threshold"])
-
-    if confidence >= automated_threshold and blast_radius <= blast_threshold:
-        return "SOAR_AUTOMATED"
-    if confidence >= automated_threshold and blast_radius > blast_threshold:
-        return "HUMAN_APPROVAL"
-    return "ANALYST_QUEUE"
+def compute_overall_risk_score(
+    behavior_score: float,
+    ttp_confidence: float,
+    planner_confidence: float,
+    asset_criticality: float,
+    blast_radius: float,
+) -> float:
+    return compute_final_threat_score(
+        behavior_score=behavior_score,
+        ttp_confidence=ttp_confidence,
+        planner_confidence=planner_confidence,
+        asset_criticality=asset_criticality,
+        blast_radius=blast_radius,
+    )
 
 
 def build_risk_verdict(
@@ -28,9 +29,25 @@ def build_risk_verdict(
     asset_criticality: float,
     blast_radius: float,
     recommended_action: str,
+    behavior_score: float = 0.5,
+    planner_confidence: float = 0.5,
 ) -> RiskVerdict:
-    overall = compute_overall_risk_score(ttp_match.ttp_confidence, asset_criticality, blast_radius)
-    gate_decision = determine_gate_decision(ttp_match.ttp_confidence, blast_radius)
+    overall = compute_overall_risk_score(
+        behavior_score=behavior_score,
+        ttp_confidence=ttp_match.ttp_confidence,
+        planner_confidence=planner_confidence,
+        asset_criticality=asset_criticality,
+        blast_radius=blast_radius,
+    )
+    gate_decision = determine_confidence_gate(overall, blast_radius)
+    explanation = build_decision_explanation(
+        behavior_score=behavior_score,
+        ttp_confidence=ttp_match.ttp_confidence,
+        planner_confidence=planner_confidence,
+        asset_criticality=asset_criticality,
+        blast_radius=blast_radius,
+        gate_decision=gate_decision,
+    )
 
     return RiskVerdict(
         episode_id=episode_id,
@@ -43,4 +60,5 @@ def build_risk_verdict(
         overall_risk_score=overall,
         recommended_action=recommended_action,
         gate_decision=gate_decision,
+        explanation=explanation,
     )

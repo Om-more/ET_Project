@@ -1,0 +1,599 @@
+You are acting as a Principal Staff Software Engineer, Principal ML Engineer, Security Architect, MLOps Engineer, and Cybersecurity Researcher.
+
+This repository implements MAPAO (MITRE-Aware Predictive Autonomous Orchestrator), an AI-powered cyber resilience platform for Critical National Infrastructure.
+
+Your job is NOT to rewrite the repository.
+
+Your job is to COMPLETE it while preserving the existing architecture.
+
+IMPORTANT RULES
+
+1. DO NOT rename folders.
+2. DO NOT rename files.
+3. DO NOT break existing APIs.
+4. DO NOT remove implemented modules.
+5. Preserve the current architecture.
+6. Only extend missing functionality.
+7. Every modification must compile.
+8. Every change must be production quality.
+9. Use modular, testable code.
+10. Keep every module independent.
+
+-------------------------------------------------
+
+FIRST
+
+Analyze the entire repository.
+
+Understand
+
+- architecture
+- dependency graph
+- execution flow
+- folder responsibilities
+- APIs
+- data flow
+
+Generate
+
+PROJECT_ANALYSIS.md
+
+Do NOT modify code during analysis.
+
+-------------------------------------------------
+
+SECOND
+
+Validate the repository.
+
+Automatically detect
+
+- syntax errors
+- import errors
+- broken module paths
+- circular imports
+- missing __init__.py
+- missing dependencies
+- invalid configs
+- wrong object references
+- missing requirements
+- placeholder implementations
+- TODOs
+- mocked logic
+
+Automatically fix only the minimum code required.
+
+Never replace a working implementation.
+
+Never simplify architecture.
+
+Never remove a module simply because another implementation exists.
+
+Prefer extending modules over replacing them.
+
+Repeat until
+
+python api/main.py
+
+starts successfully.
+
+-------------------------------------------------
+
+THIRD
+
+Execute every runnable component.
+
+Run
+
+- FastAPI
+- Streamlit
+- build_mitre_rag.py
+
+Verify they work.
+
+If anything fails
+
+fix it automatically.
+
+Repeat until successful.
+
+-------------------------------------------------
+
+FOURTH
+
+Implement every missing module inside the EXISTING folder structure only.
+
+Current architecture is
+
+Telemetry
+
+↓
+
+Normalization
+
+↓
+
+Episode Builder
+
+↓
+
+Episode Memory
+
+↓
+
+Behavior Model
+
+↓
+
+MITRE Mapping
+
+↓
+
+Next-Step Prediction
+
+↓
+
+Risk Engine
+
+↓
+
+Decision Fusion
+
+↓
+
+Confidence Gate
+
+↓
+
+Planner
+
+↓
+
+SOAR
+
+↓
+
+Dashboard
+
+↓
+
+Feedback
+
+Do NOT change this architecture.
+
+-------------------------------------------------
+
+Implement src/memory/
+
+Implement Episode Memory.
+
+Requirements
+
+Store episodes
+
+Search
+
+Persistence
+
+SQLite backend
+
+Versioning
+
+-------------------------------------------------
+
+Implement src/graph/
+
+Use NetworkX.
+
+Represent
+
+Users
+
+Hosts
+
+IPs
+
+Processes
+
+ATT&CK Techniques
+
+Provide graph query APIs.
+
+-------------------------------------------------
+
+Implement src/predictor/
+
+Do NOT remove existing risk.py.
+
+Add
+
+behavior_model.py
+
+Isolation Forest
+
+ttp_classifier.py
+
+XGBoost
+
+next_step_predictor.py
+
+LSTM
+
+Every model must expose
+
+train()
+
+load()
+
+predict()
+
+save()
+
+-------------------------------------------------
+
+Create training/
+
+Add
+
+train_behavior_model.py
+
+train_ttp.py
+
+train_next_step.py
+
+These scripts must
+
+load datasets
+
+train models
+
+save
+
+models/isolation_forest.pkl
+
+models/ttp_classifier.pkl
+
+models/next_step_model.pt
+
+Training must NEVER happen during runtime.
+
+-------------------------------------------------
+
+Use the datasets that I will provide.
+
+Automatically preprocess
+
+normalize
+
+clean
+
+split
+
+train
+
+evaluate
+
+save models.
+
+-------------------------------------------------
+
+Improve Episode Builder.
+
+Group by
+
+User
+
+Host
+
+Session
+
+IP
+
+Time Window
+
+Process Tree
+
+Return structured Episode objects.
+
+-------------------------------------------------
+
+Improve MITRE Mapping.
+
+Return
+
+Top K techniques
+
+Confidence
+
+Evidence
+
+Description
+
+Technique IDs
+
+-------------------------------------------------
+
+Implement Decision Fusion.
+
+Combine
+
+Behavior Score
+
+TTP Confidence
+
+Planner Confidence
+
+Blast Radius
+
+Asset Criticality
+
+Return
+
+Final Threat Score
+
+Decision
+
+Confidence
+
+Explanation
+
+-------------------------------------------------
+
+Implement Confidence Gate.
+
+Rules
+
+High confidence + Low impact
+
+Automatic SOAR
+
+High confidence + High impact
+
+Human approval
+
+Low confidence
+
+Analyst Queue
+
+-------------------------------------------------
+
+Implement Planner Agent.
+
+DO NOT USE LLM FOR DETECTION.
+
+Planner should receive
+
+Episode
+
+Behavior Score
+
+Predicted TTP
+
+Predicted Next Technique
+
+Risk
+
+Asset Criticality
+
+Blast Radius
+
+Only use Groq LLM for
+
+ATT&CK explanation
+
+Analyst summary
+
+Containment recommendation
+
+Natural language reasoning
+
+Incident report generation
+
+DO NOT allow Groq to calculate
+
+Risk
+
+Anomaly
+
+TTP
+
+Prediction
+
+-------------------------------------------------
+
+Groq Integration
+
+Do NOT hardcode API keys.
+
+Read
+
+.env
+
+using environment variables.
+
+If GROQ_API_KEY is absent
+
+disable planner gracefully.
+
+-------------------------------------------------
+
+Improve SOAR.
+
+Only simulated actions.
+
+Implement
+
+Block IP
+
+Disable User
+
+Isolate Host
+
+Snapshot VM
+
+Rollback
+
+Audit Log
+
+Never execute destructive actions.
+
+-------------------------------------------------
+
+Improve Dashboard.
+
+Display
+
+Live Events
+
+Episode Timeline
+
+Episode Story
+
+Attack Graph
+
+MITRE Mapping
+
+Behavior Score
+
+Risk Score
+
+Predicted Next Technique
+
+Planner Recommendation
+
+Decision
+
+SOAR Action
+
+Audit Trail
+
+Feedback
+
+Dark SOC Theme
+
+-------------------------------------------------
+
+Feedback Module
+
+Store
+
+Analyst Approval
+
+Rejected Alerts
+
+Containment Success
+
+Correct TTP
+
+Use this for future retraining.
+
+-------------------------------------------------
+
+Testing
+
+Create unit tests.
+
+Run every test.
+
+Fix every failing test.
+
+-------------------------------------------------
+
+Execution
+
+Automatically execute
+
+python scripts/build_mitre_rag.py
+
+python training/train_behavior_model.py
+
+python training/train_ttp.py
+
+python training/train_next_step.py
+
+python api/main.py
+
+streamlit run dashboards/streamlit_app.py
+
+Fix every failure until all commands execute successfully.
+
+-------------------------------------------------
+
+Deliverables
+
+When finished produce
+
+1. FINAL_ARCHITECTURE.md
+
+2. EXECUTION_GUIDE.md
+
+3. DATASET_GUIDE.md
+
+4. MODEL_SUMMARY.md
+
+5. TEST_REPORT.md
+
+6. CHANGELOG.md
+
+7. Remaining TODO list (if anything cannot be completed).
+
+Do not stop after one error.
+
+Continue fixing until the repository reaches a stable, production-quality state.
+
+If a required dataset is missing, identify it clearly and continue implementing everything else using interfaces and placeholders that can immediately use the dataset once it is added.
+
+The final repository should be runnable end-to-end.
+
+NON-NEGOTIABLE ARCHITECTURAL CONSTRAINTS
+
+1. Preserve the existing architecture exactly.
+2. Preserve the existing methodology exactly.
+3. Do NOT reorder pipeline stages.
+4. Do NOT remove Episode Builder.
+5. Do NOT remove Episode Memory.
+6. Do NOT bypass Decision Fusion.
+7. Do NOT bypass Confidence Gate.
+8. Do NOT move Planner before Decision Fusion.
+9. Do NOT replace ML models with LLM calls.
+10. LLM is only allowed for reasoning, explanation, and planning.
+11. Every module must remain independently testable.
+12. Extend modules only; do not redesign the system.
+
+==========================
+DATASET CONFIGURATION
+==========================
+
+The training datasets will NOT be committed to the repository.
+
+The primary behavior training dataset is CICIDS2017.
+
+I will provide a Google Drive link that is publicly accessible.--(https://drive.google.com/drive/folders/1s3DdK5p-tNkYU9HP3b9UNepD3lorA1PX?usp=drive_link)
+
+Requirements
+
+1. Create a configurable dataset loader.
+
+2. Accept either
+
+- local folder
+- Google Drive URL (https://drive.google.com/drive/folders/1s3DdK5p-tNkYU9HP3b9UNepD3lorA1PX?usp=drive_link)
+
+through config.
+
+3. Automatically
+
+- download if missing
+- verify checksum if available
+- unzip
+- organize into
+
+data/
+    datasets/
+        CICIDS2017/
+
+4. Never download again if already present.
+
+5. Training scripts must automatically detect whether the dataset already exists.
+
+6. Do NOT retrain unless explicitly requested.
