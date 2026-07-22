@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="assets/banner.png" alt="MAPAO — MITRE-Aware Predictive Autonomous Orchestrator" width="100%">
+  <img width="1200" height="675" alt="banner" src="https://github.com/user-attachments/assets/817bf006-67a1-4c8b-80c3-598e90569269" /><img width="2105" height="644" alt="architecture-diagram" src="https://github.com/user-attachments/assets/15ce2554-9104-48f8-932d-3e89e83326ce" />
+
 </p>
 
 <h1 align="center">MAPAO</h1>
@@ -101,7 +102,9 @@ maps those episodes to MITRE ATT&CK tactics and techniques, predicts the attacke
 approved containment actions once confidence crosses a defined threshold.
 
 <p align="center">
-  <img src="assets/architecture-diagram.png" alt="MAPAO five-layer architecture diagram" width="100%">
+  <img width="1366" height="768" alt="dashboard-screenshot" src="https://github.com/user-attachments/assets/0d8f8c2c-3282-4347-ae60-14ae83507696" />
+<img width="2105" height="644" alt="architecture-diagram" src="https://github.com/user-attachments/assets/ffbafde7-b67e-44fd-9801-9a9174816015" />
+
 </p>
 
 <p align="center"><i>Left-to-right, five-layer flow — from raw telemetry ingestion through to governance and feedback.</i></p>
@@ -156,7 +159,7 @@ recalibration is auditable rather than opaque.
 ## Live System Demonstration
 
 <p align="center">
-  <img src="assets/dashboard-screenshot.png" alt="MAPAO prototype dashboard" width="100%">
+  <img width="1366" height="768" alt="dashboard-screenshot" src="https://github.com/user-attachments/assets/31c9a247-b8d7-4489-be81-838b9e993ccf" />
 </p>
 
 <p align="center"><i>Event Feed → AI Reasoning → SOAR Control, running end-to-end. Here the system matches a
