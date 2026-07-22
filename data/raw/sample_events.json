@@ -1,0 +1,19 @@
+[
+  {
+    "event_id": "evt-001",
+    "timestamp": "2026-07-22T12:00:00",
+    "telemetry_type": "endpoint",
+    "source": {"ip": "10.0.0.1", "host_id": "WS-FINANCE-04", "user_id": "admin"},
+    "destination": {"ip": "10.0.0.2", "host_id": "FS-SERVER-01"},
+    "activity": {"action": "process_creation", "process_name": "powershell.exe", "cmd_line": "powershell -enc ...", "parent_process": "explorer.exe"},
+    "metadata": {"raw_event_type": "process"}
+  },
+  {
+    "event_id": "evt-002",
+    "timestamp": "2026-07-22T12:05:00",
+    "telemetry_type": "network",
+    "source": {"ip": "10.0.0.1", "host_id": "WS-FINANCE-04", "user_id": "admin"},
+    "destination": {"ip": "10.0.0.3"},
+    "activity": {"action": "remote_connection", "process_name": "ssh.exe", "cmd_line": "ssh attacker@10.0.0.3"}
+  }
+]

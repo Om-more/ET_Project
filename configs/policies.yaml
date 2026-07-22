@@ -1,0 +1,11 @@
+risk:
+  automated_confidence: 0.85
+  blast_radius_threshold: 4.0
+
+assets:
+  default_criticality: 5.0
+  max_criticality: 10.0
+  max_blast_radius: 10.0
+
+audit:
+  log_file: "data/processed/audit_trail.json"

@@ -1,0 +1,10 @@
+app:
+  host: "127.0.0.1"
+  port: 8000
+
+logging:
+  level: "INFO"
+
+risk:
+  automated_confidence: 0.85
+  blast_radius_threshold: 4.0
