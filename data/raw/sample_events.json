@@ -1,19 +1,363 @@
 [
   {
     "event_id": "evt-001",
-    "timestamp": "2026-07-22T12:00:00",
-    "telemetry_type": "endpoint",
-    "source": {"ip": "10.0.0.1", "host_id": "WS-FINANCE-04", "user_id": "admin"},
-    "destination": {"ip": "10.0.0.2", "host_id": "FS-SERVER-01"},
-    "activity": {"action": "process_creation", "process_name": "powershell.exe", "cmd_line": "powershell -enc ...", "parent_process": "explorer.exe"},
-    "metadata": {"raw_event_type": "process"}
+    "timestamp": "2026-07-22T08:00:15",
+    "telemetry_type": "auth",
+    "source": {
+      "ip": "10.0.2.11",
+      "host_id": "WS-FINANCE-01",
+      "user_id": "jsmith"
+    },
+    "activity": {
+      "action": "successful_login",
+      "cmd_line": "Interactive logon via Winlogon"
+    },
+    "metadata": {
+      "raw_event_type": "winevent_4624"
+    }
   },
   {
     "event_id": "evt-002",
-    "timestamp": "2026-07-22T12:05:00",
+    "timestamp": "2026-07-22T08:05:30",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.2.11",
+      "host_id": "WS-FINANCE-01",
+      "user_id": "jsmith"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "outlook.exe",
+      "cmd_line": "outlook.exe /recycle",
+      "parent_process": "explorer.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
+  },
+  {
+    "event_id": "evt-003",
+    "timestamp": "2026-07-22T08:12:00",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.3.60",
+      "host_id": "LINUX-APP-01",
+      "user_id": "root"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "nginx",
+      "cmd_line": "nginx -g 'daemon on;'",
+      "parent_process": "systemd"
+    },
+    "metadata": {
+      "raw_event_type": "auditd_exec"
+    }
+  },
+  {
+    "event_id": "evt-004",
+    "timestamp": "2026-07-22T08:20:45",
+    "telemetry_type": "dns",
+    "source": {
+      "ip": "10.0.2.31",
+      "host_id": "WS-ENG-01",
+      "user_id": "dlee"
+    },
+    "destination": {
+      "ip": "8.8.8.8",
+      "port": 53
+    },
+    "activity": {
+      "action": "dns_query",
+      "cmd_line": "Standard query A github.com"
+    },
+    "metadata": {
+      "raw_event_type": "zeek_dns"
+    }
+  },
+  {
+    "event_id": "evt-005",
+    "timestamp": "2026-07-22T09:01:10",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "bwilliams"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "winword.exe",
+      "cmd_line": "winword.exe C:\\Users\\bwilliams\\Downloads\\Q3_Commission_Invoice.docm",
+      "parent_process": "explorer.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
+  },
+  {
+    "event_id": "evt-006",
+    "timestamp": "2026-07-22T09:01:25",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "bwilliams"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "powershell.exe",
+      "cmd_line": "powershell.exe -nop -w hidden -enc JABzAHQAcgBhAHQAYQAgAD0A...",
+      "parent_process": "winword.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
+  },
+  {
+    "event_id": "evt-007",
+    "timestamp": "2026-07-22T09:02:00",
     "telemetry_type": "network",
-    "source": {"ip": "10.0.0.1", "host_id": "WS-FINANCE-04", "user_id": "admin"},
-    "destination": {"ip": "10.0.0.3"},
-    "activity": {"action": "remote_connection", "process_name": "ssh.exe", "cmd_line": "ssh attacker@10.0.0.3"}
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "bwilliams"
+    },
+    "destination": {
+      "ip": "185.220.101.5",
+      "port": 443
+    },
+    "activity": {
+      "action": "remote_connection",
+      "process_name": "powershell.exe",
+      "cmd_line": "HTTPS TLS session established to untrusted external IP"
+    },
+    "metadata": {
+      "raw_event_type": "zeek_conn"
+    }
+  },
+  {
+    "event_id": "evt-008",
+    "timestamp": "2026-07-22T09:05:15",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "bwilliams"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "whoami.exe",
+      "cmd_line": "whoami /all",
+      "parent_process": "powershell.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
+  },
+  {
+    "event_id": "evt-009",
+    "timestamp": "2026-07-22T09:05:30",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "bwilliams"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "net.exe",
+      "cmd_line": "net group \"Domain Admins\" /domain",
+      "parent_process": "powershell.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
+  },
+  {
+    "event_id": "evt-010",
+    "timestamp": "2026-07-22T09:15:20",
+    "telemetry_type": "network",
+    "source": {
+      "ip": "10.0.2.21",
+      "host_id": "WS-HR-01",
+      "user_id": "sjones"
+    },
+    "destination": {
+      "ip": "10.0.3.50",
+      "host_id": "PROXY-01",
+      "port": 8080
+    },
+    "activity": {
+      "action": "network_connection",
+      "process_name": "chrome.exe",
+      "cmd_line": "HTTP Proxy request to internal HR portal"
+    },
+    "metadata": {
+      "raw_event_type": "zeek_conn"
+    }
+  },
+  {
+    "event_id": "evt-011",
+    "timestamp": "2026-07-22T09:30:00",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "SYSTEM"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "rundll32.exe",
+      "cmd_line": "rundll32.exe C:\\windows\\system32\\comsvcs.dll MiniDump 608 C:\\temp\\lsass.dmp full",
+      "parent_process": "cmd.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
+  },
+  {
+    "event_id": "evt-012",
+    "timestamp": "2026-07-22T09:42:10",
+    "telemetry_type": "auth",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "jsmith"
+    },
+    "destination": {
+      "ip": "10.0.2.11",
+      "host_id": "WS-FINANCE-01"
+    },
+    "activity": {
+      "action": "failed_login",
+      "cmd_line": "NTLM authentication failed - Unknown user or bad password"
+    },
+    "metadata": {
+      "raw_event_type": "winevent_4625"
+    }
+  },
+  {
+    "event_id": "evt-013",
+    "timestamp": "2026-07-22T09:42:25",
+    "telemetry_type": "auth",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "Admin_IT"
+    },
+    "destination": {
+      "ip": "10.0.2.11",
+      "host_id": "WS-FINANCE-01"
+    },
+    "activity": {
+      "action": "successful_login",
+      "cmd_line": "NTLM authentication succeeded via network logon"
+    },
+    "metadata": {
+      "raw_event_type": "winevent_4624"
+    }
+  },
+  {
+    "event_id": "evt-014",
+    "timestamp": "2026-07-22T09:43:00",
+    "telemetry_type": "network",
+    "source": {
+      "ip": "10.0.2.52",
+      "host_id": "LAP-SALES-02",
+      "user_id": "Admin_IT"
+    },
+    "destination": {
+      "ip": "10.0.2.11",
+      "host_id": "WS-FINANCE-01",
+      "port": 445
+    },
+    "activity": {
+      "action": "remote_connection",
+      "process_name": "psexec.exe",
+      "cmd_line": "psexec.exe \\\\WS-FINANCE-01 -u Admin_IT -p *** cmd.exe"
+    },
+    "metadata": {
+      "raw_event_type": "zeek_conn"
+    }
+  },
+  {
+    "event_id": "evt-015",
+    "timestamp": "2026-07-22T09:43:05",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.2.11",
+      "host_id": "WS-FINANCE-01",
+      "user_id": "SYSTEM"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "PSEXESVC.exe",
+      "cmd_line": "C:\\Windows\\PSEXESVC.exe",
+      "parent_process": "services.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
+  },
+  {
+    "event_id": "evt-016",
+    "timestamp": "2026-07-22T10:10:00",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.3.11",
+      "host_id": "SRV-WEB-01",
+      "user_id": "www-data"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "apache2",
+      "cmd_line": "apache2 -k start",
+      "parent_process": "systemd"
+    },
+    "metadata": {
+      "raw_event_type": "auditd_exec"
+    }
+  },
+  {
+    "event_id": "evt-017",
+    "timestamp": "2026-07-22T10:30:12",
+    "telemetry_type": "network",
+    "source": {
+      "ip": "10.0.2.11",
+      "host_id": "WS-FINANCE-01",
+      "user_id": "Admin_IT"
+    },
+    "destination": {
+      "ip": "10.0.1.10",
+      "host_id": "DC-PRIMARY",
+      "port": 445
+    },
+    "activity": {
+      "action": "remote_connection",
+      "process_name": "psexec.exe",
+      "cmd_line": "SMB admin share connection to Domain Controller"
+    },
+    "metadata": {
+      "raw_event_type": "zeek_conn"
+    }
+  },
+  {
+    "event_id": "evt-018",
+    "timestamp": "2026-07-22T10:32:00",
+    "telemetry_type": "endpoint",
+    "source": {
+      "ip": "10.0.1.10",
+      "host_id": "DC-PRIMARY",
+      "user_id": "SYSTEM"
+    },
+    "activity": {
+      "action": "process_creation",
+      "process_name": "vssadmin.exe",
+      "cmd_line": "vssadmin.exe delete shadows /all /quiet",
+      "parent_process": "cmd.exe"
+    },
+    "metadata": {
+      "raw_event_type": "sysmon_1"
+    }
   }
 ]
